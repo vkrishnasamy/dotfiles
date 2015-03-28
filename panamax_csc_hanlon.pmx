@@ -1,0 +1,62 @@
+---
+name: Panamax_CSC_Hanlon
+description: Template for Hanlon using panamax to run it with single click
+keywords: Panamax hanlon template dockerized
+type: Default
+documentation: |-
+  Panamax_Hanlon
+  Panamax Hanlon template with all components of Hanlon namely Server, iPXE, tftp, client etc..
+
+  Thanks to Tom Mcsweeney for all the support and help to get the understanding of Hanlon, besides being the author of 'Hanlon' - a bare metal provisioning tool
+
+  Thanks to Joseph callen for patiently helping me to install hanlon on Fedora21 - during 1st time
+
+  Here is what this Panamax template is doing
+
+  tl;dr It will help deploy and run the Hanlon in a single click on any chosen cloud or in your Mac (if you have installed the pre-requisites)
+
+  Prerequisites
+
+  install Vagrant
+  install virtual box
+  install Panamax.io (a simple brew install)
+  running Hanlon
+
+  Check for the template by name Panamax_Hanlon
+  the template has all the components of Hanlon
+  Choose your cloud to deploy or use your local Mac (you can do the same in Linux as well, as there is a panamax for linux)
+  run and try provisioning a VM or a physical machine with chosen OS
+  For Hanlon features and usage look for https://github.com/csc/Hanlon
+  Updates on Hanlon
+
+  Every new updates to Hanlon will bee-line to Dockerhub as containers and will get periodically updated this template or will update with appropriate description for the new panamax_hanlon template(if preserving template version is relevant!)
+
+  Tracert on here is the 'why and how'!
+
+  I was looking for a Vagrant driven control on the life cycle of *inx.
+  I was looking for docker combination
+  CoreOS and fleet was more than a boon to add to this
+  running on a Mac directly without heavy duty VMs for provisioning
+  Ultimately to run Hanlon and get a hand on it with all the above
+  Panamax was a super close hit and I found using panamax -> Vagrant Spinning -> a CoreOS having a fleet on top running ->docker and connected to -> dockerhub and helps stictch multiple containers -> creating tempates in github to share -> run in either Mac or any cloud.. so there.
+
+  on questions - vittal.krishnasamy@gmail.com
+
+  tip : This repo might move within github to a more organized place!!
+images:
+- name: cscdock_hanlon_latest
+  source: cscdock/hanlon:latest
+  category: Hanlon_Server
+  type: Default
+- name: cscdock_hanlon-client
+  source: cscdock/hanlon-client:latest
+  category: Hanlon_client
+  type: Default
+- name: hanlon_atftpd
+  source: hanlon/atftpd:latest
+  category: Hanlon_atftpd
+  type: Default
+- name: hanlon_ipxe-build
+  source: hanlon/ipxe-build:latest
+  category: Hanlon_iPXE
+  type: Default
